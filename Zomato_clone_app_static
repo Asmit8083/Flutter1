@@ -1,0 +1,712 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  final ButtonStyle buttonstyle = ElevatedButton.styleFrom(
+      side: const BorderSide(
+        width: 1,
+        color: Colors.grey,
+      ),
+      backgroundColor: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      textStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold));
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.light().copyWith(),
+      debugShowCheckedModeBanner: false,
+      
+      home: Scaffold(
+        bottomNavigationBar: SizedBox(
+          height: 65,
+          child: BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.delivery_dining),
+                label: 'Delivery',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.restaurant),
+                label: 'Dining',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_tree_outlined),
+                label: 'Zomadaland',
+              ),
+            ],
+            selectedItemColor:const Color(0xFFcb202d),
+          ),
+        ),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text(
+            'Zomato',
+            style: TextStyle(
+              color: Color(0xFF4F4A45),
+              letterSpacing: 2,
+            ),
+          ),
+          leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.search,
+              color: Color(0xFFcb202d),
+            ),
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.settings,
+                color: Color(0xFFcb202d),
+              ),
+              onPressed: () {},
+            )
+          ],
+          centerTitle: false,
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 15),
+                    const Row(children: <Widget>[
+                      Expanded(
+                        child: Divider(
+                          thickness: 1.0,
+                          color: Color(0xFF4F4A45),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          'ALL RESTAURANTS',
+                          style: TextStyle(
+                            color: Color(0xFF4F4A45),
+                            letterSpacing: 3,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 1.0,
+                          color: Color(0xFF4F4A45),
+                        ),
+                      ),
+                    ]),
+                    const SizedBox(height: 15),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(children: <Widget>[
+                        const SizedBox(width: 5),
+                        ElevatedButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.sort,
+                            color: Color(0xFF4F4A45),
+                          ),
+                          label: const Text(
+                            "Sort",
+                            style: TextStyle(
+                              color: Color(0xFF4F4A45),
+                              letterSpacing: 2,
+                            ),
+                          ),
+                          style: buttonstyle,
+                        ),
+                        const SizedBox(width: 5),
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: buttonstyle,
+                          child: const Text(
+                            'Award Winners',
+                            style: TextStyle(
+                              color: Color(0xFF4F4A45),
+                              letterSpacing: 2,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: buttonstyle,
+                          child: const Text(
+                            'Nearest',
+                            style: TextStyle(
+                              color: Color(0xFF4F4A45),
+                              letterSpacing: 2,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: buttonstyle,
+                          child: const Text(
+                            'Great Choice',
+                            style: TextStyle(
+                              color: Color(0xFF4F4A45),
+                              letterSpacing: 2,
+                            ),
+                          ),
+                        ),
+                      ]),
+                    ),
+                    const SizedBox(height: 15),
+                    const Center(
+                      child: Text(
+                        'FEATURED',
+                        style: TextStyle(
+                          color: Color(0xFF4F4A45),
+                          letterSpacing: 2,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      height: 300,
+                      width: double.infinity,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          children: [
+                            Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    topLeft: Radius.circular(20),
+                                  ),
+                                  child: SizedBox.fromSize(
+                                    child: Image.network(
+                                      'data:image/jpeg;base64,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',
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: 150,
+                                    ),
+                                  ),
+                                ),
+                                const Positioned(
+                                  top: 10,
+                                  right: 10,
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.favorite,
+                                        color: Colors.pink,
+                                      ),
+                                      SizedBox(width: 15),
+                                      Icon(
+                                        Icons.more_vert,
+                                        color: Colors.white,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              height: 122,
+                              width: double.infinity,
+                              child: const Column(
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'RNR Biryani -Taste of 1953',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 15.0,
+                                          letterSpacing: 1.5,
+                                        ),
+                                      ),
+                                      Card(
+                                        color: Colors.green,
+                                        child: Row(
+                                          children: [
+                                            Text('4.2'),
+                                            Icon(
+                                              Icons.star,
+                                              size: 12,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+//                                   Align(
+//                                     alignment: Alignment.centerLeft,
+//                                     child: Text(
+//                                       '1953',
+//                                       style: TextStyle(
+//                                         color: Colors.black,
+//                                         fontWeight: FontWeight.w900,
+//                                         fontSize: 15.0,
+//                                         letterSpacing: 1.5,
+//                                       ),
+//                                     ),
+//                                   ),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Biryani · South Indian · ₹300 for one ',
+                                      style: TextStyle(
+                                        color: Color(0xFF4F4A45),
+                                        fontSize: 12.0,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.access_time_filled,
+                                          color: Colors.green,
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          ' · 35-40 min · ',
+                                          style: TextStyle(
+                                            color: Color(0xFF4F4A45),
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Free Delivery',
+                                          style: TextStyle(
+                                            color: Color(0xFFFFD93D),
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Divider(
+                                      thickness: 1.0,
+                                      color: Color(0xFF4F4A45),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.access_time_filled,
+                                          color: Color(0xFFC07F00),
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          'Extra 10% OFF ',
+                                          style: TextStyle(
+                                            color: Color(0xFFC07F00),
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Icon(
+                                          Icons.access_time_filled,
+                                          color: Colors.blue,
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          '10% OFF upto  ₹40',
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      height: 300,
+                      width: double.infinity,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          children: [
+                            Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    topLeft: Radius.circular(20),
+                                  ),
+                                  child: SizedBox.fromSize(
+                                    child: Image.network(
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbNqGQODXejfO8vbIppzQ0gjDqZFH9hbEBUQ&usqp=CAU',
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: 150,
+                                    ),
+                                  ),
+                                ),
+                                const Positioned(
+                                  top: 10,
+                                  right: 10,
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.favorite,
+                                        color: Colors.pink,
+                                      ),
+                                      SizedBox(width: 15),
+                                      Icon(
+                                        Icons.more_vert,
+                                        color: Colors.white,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              height: 122,
+                              width: double.infinity,
+                              child: const Column(
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Paneer Wrap - Authentic',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 15.0,
+                                          letterSpacing: 1.5,
+                                        ),
+                                      ),
+                                      Card(
+                                        color: Colors.green,
+                                        child: Row(
+                                          children: [
+                                            Text('4.2'),
+                                            Icon(
+                                              Icons.star,
+                                              size: 12,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+//                                  Align(
+//                                    alignment: Alignment.centerLeft,
+//                                    child: Text(
+//                                      'Punjabi',
+//                                      style: TextStyle(
+//                                        color: Colors.black,
+//                                        fontWeight: FontWeight.w900,
+//                                        fontSize: 15.0,
+//                                        letterSpacing: 1.5,
+//                                      ),
+//                                    ),
+//                                   ),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Paneer Roll · North Indian · ₹150 for one ',
+                                      style: TextStyle(
+                                        fontSize: 12.0,
+                                        color: Color(0xFF4F4A45),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.access_time_filled,
+                                          color: Colors.green,
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          ' · 35-40 min · ',
+                                          style: TextStyle(
+                                            color: Color(0xFF4F4A45),
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Free Delivery',
+                                          style: TextStyle(
+                                            color: Color(0xFFFFD93D),
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Divider(
+                                      thickness: 1.0,
+                                      color: Color(0xFF4F4A45),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.access_time_filled,
+                                          color: Color(0xFFC07F00),
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          'Extra 10% OFF ',
+                                          style: TextStyle(
+                                            color: Color(0xFFC07F00),
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Icon(
+                                          Icons.access_time_filled,
+                                          color: Colors.blue,
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          '10% OFF upto  ₹40',
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      height: 300,
+                      width: double.infinity,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          children: [
+                            Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    topLeft: Radius.circular(20),
+                                  ),
+                                  child: SizedBox.fromSize(
+                                    child: Image.network(
+                                      'data:image/jpeg;base64,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',
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: 150,
+                                    ),
+                                  ),
+                                ),
+                                const Positioned(
+                                  top: 10,
+                                  right: 10,
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.favorite,
+                                        color: Colors.pink,
+                                      ),
+                                      SizedBox(width: 15),
+                                      Icon(
+                                        Icons.more_vert,
+                                        color: Colors.white,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              height: 122,
+                              width: double.infinity,
+                              child: const Column(
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'RNR Biryani -Taste of 1953',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 15.0,
+                                          letterSpacing: 1.5,
+                                        ),
+                                      ),
+                                      Card(
+                                        color: Colors.green,
+                                        child: Row(
+                                          children: [
+                                            Text('4.2'),
+                                            Icon(
+                                              Icons.star,
+                                              size: 12,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+//                                   Align(
+//                                     alignment: Alignment.centerLeft,
+//                                     child: Text(
+//                                       '1953',
+//                                       style: TextStyle(
+//                                         color: Colors.black,
+//                                         fontWeight: FontWeight.w900,
+//                                         fontSize: 15.0,
+//                                         letterSpacing: 1.5,
+//                                       ),
+//                                     ),
+//                                   ),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Biryani · South Indian · ₹300 for one ',
+                                      style: TextStyle(
+                                        color: Color(0xFF4F4A45),
+                                        fontSize: 12.0,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.access_time_filled,
+                                          color: Colors.green,
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          ' · 35-40 min · ',
+                                          style: TextStyle(
+                                            color: Color(0xFF4F4A45),
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Free Delivery',
+                                          style: TextStyle(
+                                            color: Color(0xFFFFD93D),
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Divider(
+                                      thickness: 1.0,
+                                      color: Color(0xFF4F4A45),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.access_time_filled,
+                                          color: Color(0xFFC07F00),
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          'Extra 10% OFF ',
+                                          style: TextStyle(
+                                            color: Color(0xFFC07F00),
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Icon(
+                                          Icons.access_time_filled,
+                                          color: Colors.blue,
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          '10% OFF upto  ₹40',
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Hello, World!',
+      style: Theme.of(context).textTheme.headlineMedium,
+    );
+  }
+}
